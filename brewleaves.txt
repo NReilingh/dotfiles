@@ -1,0 +1,12 @@
+ddclient
+gifsicle
+highlight
+lynx
+netcat
+nmap
+node
+ssh-copy-id
+tmux
+tree
+wakeonlan
+wget
