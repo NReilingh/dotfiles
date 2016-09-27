@@ -1,9 +1,12 @@
+htop
+reattach-to-user-namespace
+ddclient
 gifsicle
 highlight
-htop
+lynx
+netcat
 nmap
 node
-reattach-to-user-namespace
 ssh-copy-id
 tmux
 tree
