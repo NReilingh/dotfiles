@@ -1,3 +1,6 @@
+ddclient
+lynx
+netcat
 gifsicle
 highlight
 htop
