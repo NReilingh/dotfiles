@@ -10,8 +10,6 @@
 "  for MS-DOS and Win32:  $VIM\_vimrc
 "	    for OpenVMS:  sys$login:.vimrc
 
-nmap <Leader>r :w<CR>:!./%<CR>
-
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
   finish
@@ -20,6 +18,32 @@ endif
 " Use Vim settings, rather than Vi settings (much better!).
 " This must be first, because it changes other options as a side effect.
 set nocompatible
+
+" USER SETTINGS HERE!!!
+set hidden
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall | source $MYVIMRC
+endif
+nmap <Leader>r :w<CR>:!./%<CR>
+set number
+set relativenumber
+nmap <Leader>l :set list!<CR>
+set listchars=tab:▸\ ,eol:¬
+if has("autocmd")
+	autocmd BufWritePost .vimrc source $MYVIMRC
+endif
+nmap <Leader>v :tabedit $MYVIMRC<CR>
+
+call plug#begin()
+
+Plug 'scrooloose/nerdcommenter'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'tpope/vim-dispatch'
+
+call plug#end()
+" END USER SETTINGS!!!
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
