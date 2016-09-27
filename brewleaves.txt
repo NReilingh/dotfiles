@@ -1,0 +1,11 @@
+gifsicle
+highlight
+htop
+nmap
+node
+reattach-to-user-namespace
+ssh-copy-id
+tmux
+tree
+wakeonlan
+wget
