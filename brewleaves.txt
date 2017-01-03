@@ -1,6 +1,9 @@
+ddclient
 gifsicle
 highlight
 htop
+lynx
+netcat
 nmap
 node
 reattach-to-user-namespace
