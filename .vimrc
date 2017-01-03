@@ -41,6 +41,8 @@ call plug#begin()
 Plug 'scrooloose/nerdcommenter'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'tpope/vim-dispatch'
+Plug 'othree/xml.vim'
+Plug 'mattn/emmet-vim'
 
 call plug#end()
 " END USER SETTINGS!!!

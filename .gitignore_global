@@ -1,2 +1,8 @@
 *~
+.vagrant
+*.swp
+*.swo
+.sass-cache/
+packer_cache/
+*.vdi
 .DS_Store
