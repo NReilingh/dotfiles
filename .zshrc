@@ -24,3 +24,4 @@ setopt HIST_IGNORE_SPACE HIST_NO_STORE
 . /opt/homebrew/opt/asdf/libexec/asdf.sh
 
 export PATH="/Users/nick/.asdf/shims:$PATH"
+export PATH="$HOME/Repositories/meta-dotfiles/build/bin:$PATH"
