@@ -1,7 +1,8 @@
 # zprofile is run in login shells before zshrc
 # Use this for exporting environment variables and modifying the PATH
 
-export EDITOR=nvim
+# This WILL affect non-interactive shells, like those spawned by GitKraken for hooks
+# Use .zshrc for configuration of interactive shells.
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
@@ -11,7 +12,7 @@ if [ -f '/Users/nick/lib/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/nick/l
 typeset -U path
 path=(~/bin $path)
 
-export PATH="/Users/nick/.asdf/shims:$PATH"
+. $(brew --prefix asdf)/libexec/asdf.sh
 
 # Rust-lang
 source "$HOME/.cargo/env"

@@ -1,13 +1,19 @@
 # zshrc is run in interactive shells
 # Use this to change how the interactive prompt works
+# Use .zprofile if you also need to modify non-interactive environment.
 
-# In zprofile we set editor to vim, so this resets the zle back to emacs mode.
+export EDITOR=nvim
+
+# This used to be a zsh thing where setting the editor would also set the
+# zle keybinds, but now it seems to be a tmux thing???
+# Anyway, this allows the control-a/e/n/p shortcuts (i.e. emacs mode)
+# to work in zsh in tmux. I don't pretend to fully understand this.
 bindkey -e
 
 eval "$(direnv hook zsh)"
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/nick/lib/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/nick/lib/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f "$HOME/lib/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/lib/google-cloud-sdk/completion.zsh.inc"; fi
 
 # Replace vi with nvim, but leave vim alone
 alias vi=nvim
@@ -21,7 +27,5 @@ setopt EXTENDED_HISTORY INC_APPEND_HISTORY_TIME
 # don't store history in history
 setopt HIST_IGNORE_SPACE HIST_NO_STORE
 
-. /opt/homebrew/opt/asdf/libexec/asdf.sh
-
-export PATH="/Users/nick/.asdf/shims:$PATH"
 export PATH="$HOME/Repositories/meta-dotfiles/build/bin:$PATH"
+export PATH="$HOME/Library/Developer/Xcode/DerivedData/tesspost-elmkciapibsokrarafnjuvjxgyev/Build/Products/Debug:$PATH"
