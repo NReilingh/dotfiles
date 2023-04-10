@@ -10,6 +10,8 @@ export EDITOR=nvim
 # to work in zsh in tmux. I don't pretend to fully understand this.
 bindkey -e
 
+export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
+
 eval "$(direnv hook zsh)"
 
 # The next line enables shell command completion for gcloud.
@@ -29,3 +31,6 @@ setopt HIST_IGNORE_SPACE HIST_NO_STORE
 
 export PATH="$HOME/Repositories/meta-dotfiles/build/bin:$PATH"
 export PATH="$HOME/Library/Developer/Xcode/DerivedData/tesspost-elmkciapibsokrarafnjuvjxgyev/Build/Products/Debug:$PATH"
+
+# Enables mouse scroll inside of tmux for manpages and such.
+export LESS=--mouse
