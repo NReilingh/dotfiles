@@ -1,6 +1,7 @@
 " Spaces instead of tabs
 set tabstop=2 softtabstop=2
 set shiftwidth=2
+set shiftround
 set expandtab
 set smartindent
 
@@ -41,20 +42,22 @@ nnoremap <silent> <Leader>l <Cmd>set list!<CR>
 " Remove search highlighting.
 nnoremap <silent> <Leader>h <Cmd>nohlsearch<CR>
 nnoremap <Leader>s <Cmd>write<CR>
-nnoremap <Leader>w <Cmd>bdelete<CR>
+nnoremap <Leader>w <Cmd>bprevious<CR><Cmd>bdelete #<CR>
 
 " Makes autocmd assignments idempotent!
-augroup NMRAUTOCMD
+augroup NmrSaveVimrc
     autocmd!
     " Automatically source vimrc when saving it
     autocmd BufWritePost init.vim source $MYVIMRC
 augroup END
 
 call plug#begin(stdpath('data') . '/plugged')
+
 Plug 'neovim/nvim-lspconfig'
 
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
+Plug 'nvim-treesitter/nvim-treesitter-context'
 
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
@@ -76,7 +79,16 @@ Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'github/copilot.vim'
+
+" Colorschemes
+Plug 'rose-pine/neovim'
+Plug 'fabi1cazenave/kalahari.vim'
+Plug 'josephwecker/murphytango.vim'
+Plug 'reewr/vim-monokai-phoenix'
+Plug 'sainnhe/sonokai'
 call plug#end()
+
+colorscheme murphy
 
 "Do all the config stuff for LSP and the like
 luafile ~/.config/nvim/lsp.lua
@@ -90,6 +102,12 @@ nnoremap <Leader>fb <Cmd>Telescope buffers<CR>
 nnoremap <Leader>fh <Cmd>Telescope help_tags<CR>
 
 nnoremap <Leader>i :lua vim.lsp.buf.hover()<CR>
+nnoremap <Leader>e :lua vim.diagnostic.open_float()<CR>
+
+augroup NmrQuickFixMaps
+    autocmd!
+    autocmd FileType qf nnoremap <buffer> o <CR><C-w>p
+augroup END
 
 " Use * as tmux buffer instead of duplicating system clipboard on +.
 let g:clipboard = {
