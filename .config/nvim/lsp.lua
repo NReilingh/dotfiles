@@ -1,9 +1,27 @@
 require('Comment').setup()
 
+require("telescope").load_extension("zf-native")
+
 require'lspconfig'.rust_analyzer.setup({})
 
 vim.g.markdown_fenced_languages = {
   "ts=typescript"
+}
+
+-- This is apparently way too power-hungry
+-- require'lspconfig'.perlls.setup{}
+
+require'lspconfig'.perlnavigator.setup{
+  cmd = {'node', vim.fn.expand('$HOME/Repositories/PerlNavigator/server/out/server.js'), '--stdio'},
+  settings = {
+    perlnavigator = {
+        perlPath = 'perl',
+        enableWarnings = true,
+        perltidyProfile = '',
+        perlcriticProfile = '',
+        perlcriticEnabled = true,
+    }
+  }
 }
 
 require'lspconfig'.denols.setup{}

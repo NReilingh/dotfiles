@@ -43,13 +43,27 @@ nnoremap <silent> <Leader>l <Cmd>set list!<CR>
 nnoremap <silent> <Leader>h <Cmd>nohlsearch<CR>
 nnoremap <Leader>s <Cmd>write<CR>
 nnoremap <Leader>w <Cmd>bprevious<CR><Cmd>bdelete #<CR>
+nnoremap <Leader>rl <Cmd>LspRestart<CR>
 
 " Makes autocmd assignments idempotent!
 augroup NmrSaveVimrc
     autocmd!
     " Automatically source vimrc when saving it
     autocmd BufWritePost init.vim source $MYVIMRC
+    autocmd BufWritePost lsp.lua source $MYVIMRC
 augroup END
+
+" Install vim-plug if it's not already installed.
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
 
 call plug#begin(stdpath('data') . '/plugged')
 
@@ -73,9 +87,11 @@ Plug 'rust-lang/rust.vim'
 
 Plug 'numToStr/Comment.nvim'
 
+Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
+
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzy-native.nvim'
+Plug 'natecraddock/telescope-zf-native.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
 
 Plug 'github/copilot.vim'
@@ -98,11 +114,13 @@ set completeopt=menu,menuone,noselect,preview
 " Find files using Telescope command-line sugar.
 nnoremap <Leader>ff <Cmd>Telescope find_files<CR>
 nnoremap <Leader>fg <Cmd>Telescope live_grep<CR>
+nnoremap <Leader>fr <Cmd>Telescope grep_string<CR>
 nnoremap <Leader>fb <Cmd>Telescope buffers<CR>
 nnoremap <Leader>fh <Cmd>Telescope help_tags<CR>
 
 nnoremap <Leader>i :lua vim.lsp.buf.hover()<CR>
 nnoremap <Leader>e :lua vim.diagnostic.open_float()<CR>
+nnoremap <Leader>t <Cmd>CHADopen<CR>
 
 augroup NmrQuickFixMaps
     autocmd!
