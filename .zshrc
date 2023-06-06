@@ -19,7 +19,7 @@ if [ -f "$HOME/lib/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/lib/goo
 
 # Replace vi with nvim, but leave vim alone
 alias vi=nvim
-alias ll='ls -lAh'
+alias ll='ls -lAGh'
 
 # History bullshit
 # Store verbose history format, shared between shells, and
@@ -29,8 +29,14 @@ setopt EXTENDED_HISTORY INC_APPEND_HISTORY_TIME
 # don't store history in history
 setopt HIST_IGNORE_SPACE HIST_NO_STORE
 
+# Enables mouse scroll inside of tmux for manpages and such.
+export LESS=--mouse
+
+# PATH additions that are only used interactively
 export PATH="$HOME/Repositories/meta-dotfiles/build/bin:$PATH"
 export PATH="$HOME/Library/Developer/Xcode/DerivedData/tesspost-elmkciapibsokrarafnjuvjxgyev/Build/Products/Debug:$PATH"
 
-# Enables mouse scroll inside of tmux for manpages and such.
-export LESS=--mouse
+# ngrok completion
+if [ -x $(which ngrok) ]; then
+  source <(ngrok completion)
+fi
