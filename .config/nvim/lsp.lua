@@ -2,7 +2,8 @@ require('Comment').setup()
 
 require("telescope").load_extension("zf-native")
 
-require'lspconfig'.rust_analyzer.setup({})
+require'lspconfig'.rust_analyzer.setup{}
+require'lspconfig'.clojure_lsp.setup{}
 
 vim.g.markdown_fenced_languages = {
   "ts=typescript"

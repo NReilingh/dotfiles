@@ -7,7 +7,7 @@
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f "$HOME/lib/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/lib/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f "$HOME/lib/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/lib/google-cloud-sdk/path.zsh.inc"; fi
 
 typeset -U path
 path=(~/bin $path)
