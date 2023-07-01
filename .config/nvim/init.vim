@@ -66,6 +66,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 \| endif
 
 call plug#begin(stdpath('data') . '/plugged')
+Plug 'rebelot/kanagawa.nvim'
 
 Plug 'neovim/nvim-lspconfig'
 
@@ -87,8 +88,6 @@ Plug 'rust-lang/rust.vim'
 
 Plug 'numToStr/Comment.nvim'
 
-Plug 'ms-jpq/chadtree', {'branch': 'chad', 'do': 'python3 -m chadtree deps'}
-
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'natecraddock/telescope-zf-native.nvim'
@@ -104,7 +103,7 @@ Plug 'reewr/vim-monokai-phoenix'
 Plug 'sainnhe/sonokai'
 call plug#end()
 
-colorscheme murphy
+colorscheme kanagawa
 
 "Do all the config stuff for LSP and the like
 luafile ~/.config/nvim/lsp.lua
@@ -120,7 +119,6 @@ nnoremap <Leader>fh <Cmd>Telescope help_tags<CR>
 
 nnoremap <Leader>i :lua vim.lsp.buf.hover()<CR>
 nnoremap <Leader>e :lua vim.diagnostic.open_float()<CR>
-nnoremap <Leader>t <Cmd>CHADopen<CR>
 
 augroup NmrQuickFixMaps
     autocmd!

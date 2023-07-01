@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# This script modifies eduPersonEntitlement attributes to a user in LDAP.
+# ldapentitle <username> <service-name> <action> <entitlement>
+# <username> is the username of the user in LDAP
+# <service-name> is the subdomain of the entitlement URL
+# <action> is either "add" or "delete"
+# <entitlement> is the path of the entitlement URL
+
+username=$1
+service_name=$2
+action=$3
+entitlement=$4
+
+ldapmodify -xW <<EOF
+dn: uid=$username,ou=People,dc=bard,dc=edu
+changetype: modify
+$action: eduPersonEntitlement
+eduPersonEntitlement: https://$service_name.fc.bard.edu/$entitlement
+EOF
+
