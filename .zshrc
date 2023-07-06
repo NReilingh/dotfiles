@@ -21,6 +21,17 @@ if [ -f "$HOME/lib/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/lib/goo
 alias vi=nvim
 alias ll='ls -lAGh'
 
+# Use cdpath for Repositories
+cdpath=(~/Repositories)
+
+# Also try using autopushd
+setopt autopushd
+
+# Fix run-help
+unalias run-help
+autoload run-help
+alias help=run-help
+
 # History bullshit
 # Store verbose history format, shared between shells, and
 # write after each command finishes
