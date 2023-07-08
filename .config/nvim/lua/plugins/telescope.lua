@@ -20,8 +20,8 @@ return {
         show_unindexed = false,
         show_scores = false,
         workspaces = {
-          ['config'] = '/Users/nick/.config/nvim/',
-          ['store'] = '/Users/nick/.files/store/',
+          ['config'] = vim.fn.stdpath('config'),
+          ['store'] = vim.env.HOME .. '/.files/store/',
         },
       },
     },
