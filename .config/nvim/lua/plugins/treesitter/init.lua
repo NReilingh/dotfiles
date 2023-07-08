@@ -1,6 +1,6 @@
-textobjects = require('plugins/treesitter.textobjects')
-playground = require('plugins/treesitter.playground')
-selection = require('plugins/treesitter.selection')
+local textobjects = require('plugins/treesitter.textobjects')
+local playground = require('plugins/treesitter.playground')
+local selection = require('plugins/treesitter.selection')
 
 return {
   require('plugins/treesitter.context'),
@@ -11,23 +11,36 @@ return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
     event = { 'BufReadPost', 'BufNewFile' },
+    cmd = { 'TSInstallInfo', 'TSModuleInfo', 'TSEnable', 'TSDisable', 'TSToggle' },
     opts = vim.tbl_extend("keep",
       {
         ensure_installed = {
           'bash',
+          'clojure',
           'css',
+          'cue',
           'dockerfile',
+          'elixir',
+          'elm',
+          'erlang',
           'graphql',
           'html',
           'javascript',
           'json',
           'jsonc',
           'lua',
+          'make',
+          'markdown',
+          'markdown_inline',
+          'norg',
+          'perl',
+          'php',
           'python',
           'query',
           'regex',
           'rust',
           'scss',
+          'sql',
           'toml',
           'tsx',
           'typescript',
@@ -51,6 +64,7 @@ return {
     ),
     config = function (_, opts)
       require('nvim-treesitter.configs').setup(opts)
+      selection.config()
     end,
   },
   {
