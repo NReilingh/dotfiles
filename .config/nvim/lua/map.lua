@@ -16,14 +16,19 @@ local keymaps = {
     { '<Leader>s', '<Cmd>write<CR>' },
     { '<Leader>t', '<Cmd>Neotree toggle<CR>' },
     { '<Leader>w', '<Cmd>bprevious<CR><Cmd>bdelete #<CR>' },
+    -- <Leader>- - plugins/init.lua
   },
   -- Make command mode more like macOS's default shell
+  -- I'm told this is "tcsh-style" according to the vim manual.
   c = {
-    { '<C-a>', '<Home>', { desc = "cursor to beginning of command-line" } },
-    { '<C-b>', '<Left>', { desc = "cursor left" } },
-    { '<C-f>', '<Right>', { desc = "cursor right" } },
+    { '<C-A>', '<Home>', { desc = "cursor to beginning of command-line" } },
+    { '<C-B>', '<Left>', { desc = "cursor left" } },
+    { '<C-F>', '<Right>', { desc = "cursor right" } },
   }
 }
+
+-- And now replace Ctrl-F in command mode
+vim.cmd [[ exe "set cedit=\<C-O>" ]]
 
 local augroups = {
   NmrQuickFixMaps = {
