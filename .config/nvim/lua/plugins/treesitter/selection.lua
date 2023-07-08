@@ -23,4 +23,7 @@ return {
       },
     },
   },
+  config = function()
+    vim.keymap.set('n', '\\', 'V\\', { remap = true })
+  end,
 }

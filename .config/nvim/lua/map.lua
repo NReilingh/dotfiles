@@ -2,24 +2,32 @@
 -- I can't emphasize this enough: space as leader is life changing.
 vim.g.mapleader = ' '
 
-local nkeymaps = {
-  { '\\', 'V\\' },
-  { '<Leader>d', '<Cmd>lua vim.diagnostic.open_float()<CR>' },
-  -- <Leader>f* - plugins/telescope.lua
-  -- Set a shortcut to toggle visible whitespace on and off.
-  { '<Leader>gi', '<Cmd>TSHighlightCapturesUnderCursor<CR>' },
-  { '<Leader>gl', '<Cmd>set list!<CR>', { silent = true } },
-  -- Remove search highlighting.
-  { '<Leader>h', '<Cmd>nohlsearch<CR>', { silent = true } },
-  { '<Leader>i', '<Cmd>lua vim.lsp.buf.hover()<CR>' },
-  { '<Leader>lr', '<Cmd>LspRestart<CR>' },
-  { '<Leader>s', '<Cmd>write<CR>' },
-  { '<Leader>t', '<Cmd>Neotree toggle<CR>' },
-  { '<Leader>w', '<Cmd>bprevious<CR><Cmd>bdelete #<CR>' },
+local keymaps = {
+  n = {
+    { '<Leader>d', '<Cmd>lua vim.diagnostic.open_float()<CR>' },
+    -- <Leader>f* - plugins/telescope.lua
+    { '<Leader>gi', '<Cmd>TSHighlightCapturesUnderCursor<CR>' },
+    { '<Leader>gl', '<Cmd>set list!<CR>',
+      { silent = true, desc = "Toggle visible whitespace" } },
+    { '<Leader>h', '<Cmd>nohlsearch<CR>',
+      { silent = true, desc = "Remove search highlighting" } },
+    { '<Leader>i', '<Cmd>lua vim.lsp.buf.hover()<CR>' },
+    { '<Leader>lr', '<Cmd>LspRestart<CR>' },
+    { '<Leader>s', '<Cmd>write<CR>' },
+    { '<Leader>t', '<Cmd>Neotree toggle<CR>' },
+    { '<Leader>w', '<Cmd>bprevious<CR><Cmd>bdelete #<CR>' },
+  },
+  -- Make command mode more like macOS's default shell
+  c = {
+    { '<C-a>', '<Home>', { desc = "cursor to beginning of command-line" } },
+    { '<C-b>', '<Left>', { desc = "cursor left" } },
+    { '<C-f>', '<Right>', { desc = "cursor right" } },
+  }
 }
 
 local augroups = {
   NmrQuickFixMaps = {
+    -- Use o in quickfix mode to show the target without switching to it.
     { 'FileType', 'qf', 'nnoremap <buffer> o <CR><C-w>p' }
   },
 }
@@ -37,6 +45,8 @@ for group, autocmds in pairs(augroups) do
 
 end
 
-for _, map in ipairs(nkeymaps) do
-  vim.keymap.set('n', unpack(map))
+for mode, maps in pairs(keymaps) do
+  for _, map in ipairs(maps) do
+    vim.keymap.set(mode, unpack(map))
+  end
 end
