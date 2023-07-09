@@ -29,7 +29,7 @@ ino <silent><expr> <BS>  pumvisible() ? "\<C-e><BS>"  : "\<BS>"
 ino <silent><expr> <CR>  pumvisible() ? (complete_info().selected == -1 ? "\<C-e><CR>"  : "\<C-y><CR>")  : "\<CR>"
 ino <silent><expr> <Tab> pumvisible() ? (complete_info().selected == -1 ? "\<C-e><Tab>" : "\<C-y><Tab>") : "\<Tab>"
 
-:COQnow
+:COQnow --shut-up
       ]]
     end,
   },
