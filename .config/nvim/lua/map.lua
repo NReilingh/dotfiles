@@ -4,6 +4,7 @@ vim.g.mapleader = ' '
 
 local keymaps = {
   n = {
+    { '<Leader>c', '<Cmd>close<CR>', { desc = "Close window" } },
     { '<Leader>d', '<Cmd>lua vim.diagnostic.open_float()<CR>' },
     -- <Leader>f* - plugins/telescope.lua
     { '<Leader>gi', '<Cmd>TSHighlightCapturesUnderCursor<CR>' },
