@@ -16,7 +16,7 @@ return {
     { '<Leader>fb', '<Cmd>Telescope buffers<CR>' },
     { '<Leader>fc', '<Cmd>Telescope commands<CR>' },
     { '<Leader>fe', '<Cmd>Telescope find_files<CR>' },
-    { '<Leader>ff', '<Cmd>Telescope resume<CR>' },
+    { '<Leader>ff', '<Cmd>Telescope builtin<CR>' },
     { '<Leader>fgc', '<Cmd>Telescope colorscheme<CR>' },
     { '<Leader>fgd', '<Cmd>Telescope lsp_document_diagnostics<CR>' },
     { '<Leader>fge', '<Cmd>Telescope file_browser<CR>' },
@@ -35,5 +35,6 @@ return {
     { '<Leader>fwd', '<Cmd>Telescope lsp_workspace_diagnostics<CR>' },
     { '<Leader>f"', '<Cmd>Telescope registers<CR>' },
     { '<Leader>f/', '<Cmd>Telescope live_grep<CR>' },
+    { '<Leader>f.', '<Cmd>Telescope resume<CR>' },
   }
 }
