@@ -10,7 +10,7 @@ export EDITOR=nvim
 # to work in zsh in tmux. I don't pretend to fully understand this.
 bindkey -e
 
-export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
+export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo:$HOME/.terminfo
 
 eval "$(direnv hook zsh)"
 
