@@ -26,6 +26,9 @@ return {
   },
   {
     'github/copilot.vim',
-    event = { 'BufReadPost', 'BufNewFile' },
+    event = 'InsertEnter',
+    config = function()
+      vim.cmd [[ Copilot enable ]]
+    end,
   },
 }
