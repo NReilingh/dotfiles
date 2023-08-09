@@ -5,7 +5,7 @@
   "coq.thirdparty": { "branch": "3p", "commit": "6333c8984f61189f7a94538c1142431836512c7e" },
   "coq_nvim": { "branch": "coq", "commit": "3d202065fd34701618e049a6bdcf8634121877c6" },
   "kanagawa.nvim": { "branch": "master", "commit": "1749cea392acb7d1548a946fcee1e6f1304cd3cb" },
-  "lazy.nvim": { "branch": "main", "commit": "dac844ed617dda4f9ec85eb88e9629ad2add5e05" },
+  "lazy.nvim": { "branch": "main", "commit": "3ad55ae678876516156cca2f361c51f7952a924b" },
   "neo-tree.nvim": { "branch": "main", "commit": "38293fe690981aba6cfef5e440f26d8b956d463e" },
   "nui.nvim": { "branch": "main", "commit": "9e3916e784660f55f47daa6f26053ad044db5d6a" },
   "nvim-lspconfig": { "branch": "master", "commit": "4b1a764c10c6c8679615fcb4f1e8b0f5513d900b" },
