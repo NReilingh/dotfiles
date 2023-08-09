@@ -21,6 +21,9 @@ if [ -f "$HOME/lib/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/lib/goo
 alias vi=nvim
 alias ll='ls -lAGh'
 
+# Fixes gpg in some cases
+export GPG_TTY=$(tty)
+
 # Use cdpath for Repositories
 cdpath=(~/Repositories)
 
