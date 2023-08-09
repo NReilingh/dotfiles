@@ -13,6 +13,7 @@ local keymaps = {
     { '<Leader>h', '<Cmd>nohlsearch<CR>',
       { silent = true, desc = "Remove search highlighting" } },
     { '<Leader>i', '<Cmd>lua vim.lsp.buf.hover()<CR>' },
+    { '<Leader>li', '<Cmd>LspInfo<CR>' },
     { '<Leader>lr', '<Cmd>LspRestart<CR>' },
     { '<Leader>s', '<Cmd>write<CR>' },
     { '<Leader>t', '<Cmd>Neotree toggle<CR>' },
