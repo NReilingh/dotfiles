@@ -41,7 +41,8 @@ setopt EXTENDED_HISTORY INC_APPEND_HISTORY_TIME
 setopt HIST_IGNORE_SPACE HIST_NO_STORE
 
 # Enables mouse scroll inside of tmux for manpages and such.
-export LESS=--mouse
+# -R is raw control characters, but only for colors. Fixes git diff, etc
+export LESS="--mouse -R"
 
 # PATH additions that are only used interactively
 export PATH="$HOME/Repositories/meta-dotfiles/build/bin:$PATH"
