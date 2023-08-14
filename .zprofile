@@ -4,8 +4,6 @@
 # This WILL affect non-interactive shells, like those spawned by GitKraken for hooks
 # Use .zshrc for configuration of interactive shells.
 
-eval "$(/opt/homebrew/bin/brew shellenv)"
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f "$HOME/lib/google-cloud-sdk/path.zsh.inc" ]; then . "$HOME/lib/google-cloud-sdk/path.zsh.inc"; fi
 
