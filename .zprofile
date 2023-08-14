@@ -13,7 +13,9 @@ path=(~/bin $path)
 . $(brew --prefix asdf)/libexec/asdf.sh
 
 # Rust-lang
-source "$HOME/.cargo/env"
+if [ -f "$HOME/.cargo/env" ]; then
+  source "$HOME/.cargo/env"
+fi
 
 # Perl
 PATH="$HOME/perl5/bin${PATH:+:${PATH}}"; export PATH;

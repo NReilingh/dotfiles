@@ -52,7 +52,7 @@ export PATH="$HOME/Repositories/meta-dotfiles/build/bin:$PATH"
 export PATH="$HOME/Library/Developer/Xcode/DerivedData/tesspost-elmkciapibsokrarafnjuvjxgyev/Build/Products/Debug:$PATH"
 
 # ngrok completion
-if [ -x $(which ngrok) ]; then
+if [[ -x $(which ngrok) && $(ngrok version) == "ngrok version 3"* ]]; then
   source <(ngrok completion)
 fi
 
