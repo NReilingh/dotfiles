@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+handle() {
+  echo "SIGINT received, exiting"
+  exit 0
+}
+
+trap handle INT
+
+while true; do
+  $1
+  echo "Restarting proc"
+done
