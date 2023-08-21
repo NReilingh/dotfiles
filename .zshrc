@@ -19,12 +19,14 @@ if [ -f "$HOME/lib/google-cloud-sdk/completion.zsh.inc" ]; then . "$HOME/lib/goo
 
 # Replace vi with nvim, but leave vim alone
 alias vi=nvim
-alias ll='ls -lAGh'
+alias ll='ls -lAGhF'
 
 # Fixes gpg in some cases
 export GPG_TTY=$(tty)
 
 # Use cdpath for Repositories
+autoload -Uz compinit
+compinit
 cdpath=(~/Repositories)
 
 # Also try using autopushd
@@ -52,6 +54,6 @@ export PATH="$HOME/Repositories/meta-dotfiles/build/bin:$PATH"
 export PATH="$HOME/Library/Developer/Xcode/DerivedData/tesspost-elmkciapibsokrarafnjuvjxgyev/Build/Products/Debug:$PATH"
 
 # ngrok completion
-if [ -x $(which ngrok) ]; then
+if which ngrok>/dev/null; then
   source <(ngrok completion)
 fi
