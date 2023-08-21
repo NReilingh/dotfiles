@@ -24,5 +24,7 @@ PERL_LOCAL_LIB_ROOT="$HOME/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"
 PERL_MB_OPT="--install_base \"$HOME/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=$HOME/perl5"; export PERL_MM_OPT;
 
-# Add ngrok authtoken to env
-export NGROK_AUTHTOKEN=$(grep authtoken $HOME/.ngrok2/ngrok.yml | cut -d ' ' -f 2)
+# Add ngrok authtoken to env. This is useful for docker containers running ngrok.
+if [[ -f $HOME/.ngrok2/ngrok.yml ]]; then
+  export NGROK_AUTHTOKEN=$(grep authtoken $HOME/.ngrok2/ngrok.yml | cut -d ' ' -f 2)
+fi
