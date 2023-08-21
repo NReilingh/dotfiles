@@ -54,6 +54,13 @@ export PATH="$HOME/Repositories/meta-dotfiles/build/bin:$PATH"
 export PATH="$HOME/Library/Developer/Xcode/DerivedData/tesspost-elmkciapibsokrarafnjuvjxgyev/Build/Products/Debug:$PATH"
 
 # ngrok completion
-if which ngrok>/dev/null; then
+if [[ -x $(which ngrok) && $(ngrok version) == "ngrok version 3"* ]]; then
   source <(ngrok completion)
 fi
+
+alias ytdl="youtube-dl -f bestaudio -x --audio-format mp3"
+alias shit_vantiv="sed -e 's/^\(\([^,]*,\)\{26\}\)\(.*,\)\(\([^,]*,\)\{8\}\)
+$/\1\4/'"
+
+# twilio autocomplete setup
+TWILIO_AC_ZSH_SETUP_PATH=$HOME/.twilio-cli/autocomplete/zsh_setup && test -f $TWILIO_AC_ZSH_SETUP_PATH && source $TWILIO_AC_ZSH_SETUP_PATH;
