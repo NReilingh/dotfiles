@@ -52,6 +52,8 @@ local opts = {
   scroll = 15,
   -- Make the block cursor in insert mode instead of neovim's default bar
   guicursor = '',
+  cursorline = true,
+  cursorlineopt = 'number,screenline',
   -- These are quite garish until we have a colorscheme installed
   -- termguicolors = true,
   timeout = false,

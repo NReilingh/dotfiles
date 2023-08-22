@@ -4,7 +4,18 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      vim.cmd [[ colorscheme kanagawa ]]
+      require('kanagawa').setup({
+        colors = {
+          theme = {
+            wave = {
+              ui = {
+                bg_visual = require("kanagawa.colors").setup({ theme = 'wave' }).palette.sumiInk5
+              }
+            }
+          }
+        }
+      })
+      require('kanagawa').load('wave')
     end,
   },
   {
