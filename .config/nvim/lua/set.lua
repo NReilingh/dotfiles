@@ -49,13 +49,14 @@ local opts = {
   -- Editor behavior
   mouse = 'nv',
   scrolloff = 5,
+  sidescrolloff = 5,
   scroll = 15,
+  sidescroll = 1,
+  virtualedit = 'block,onemore',
   -- Make the block cursor in insert mode instead of neovim's default bar
   guicursor = '',
   cursorline = true,
   cursorlineopt = 'number,screenline',
-  -- These are quite garish until we have a colorscheme installed
-  -- termguicolors = true,
   timeout = false,
   ttimeout = true,
   ttimeoutlen = 100,
