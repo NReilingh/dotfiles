@@ -49,7 +49,9 @@ local opts = {
   -- Editor behavior
   mouse = 'nv',
   scrolloff = 5,
+  sidescrolloff = 5,
   scroll = 15,
+  sidescroll = 1,
   -- Make the block cursor in insert mode instead of neovim's default bar
   guicursor = '',
   cursorline = true,
