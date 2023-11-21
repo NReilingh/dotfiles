@@ -2,12 +2,14 @@ return {
   'neovim/nvim-lspconfig',
   event = { 'BufReadPre', 'BufNewFile' },
   config = function()
-    require'lspconfig'.rust_analyzer.setup{}
-    require'lspconfig'.clojure_lsp.setup{}
-    -- This is apparently way too power-hungry
-    -- require'lspconfig'.perlls.setup{}
+    local nvim_lsp = require('lspconfig')
 
-    require'lspconfig'.perlnavigator.setup{
+    nvim_lsp.rust_analyzer.setup{}
+    nvim_lsp.clojure_lsp.setup{}
+    -- This is apparently way too power-hungry
+    -- nvim_lsp.perlls.setup{}
+
+    nvim_lsp.perlnavigator.setup{
       cmd = {'node', vim.fn.expand('$HOME/Repositories/PerlNavigator/server/out/server.js'), '--stdio'},
       settings = {
         perlnavigator = {
@@ -20,10 +22,20 @@ return {
       }
     }
 
-    require'lspconfig'.denols.setup{}
+    nvim_lsp.tsserver.setup{
+      root_dir = nvim_lsp.util.root_pattern("package.json", "tsconfig.json")
+    }
 
-    require'lspconfig'.intelephense.setup{}
-    require'lspconfig'.lua_ls.setup{
+    nvim_lsp.denols.setup{
+      root_dir = nvim_lsp.util.root_pattern("deno.json", "deno.jsonc")
+    }
+
+    vim.g.markdown_fenced_languages = {
+      "ts=typescript"
+    }
+
+    nvim_lsp.intelephense.setup{}
+    nvim_lsp.lua_ls.setup{
       settings = {
         Lua = {
           runtime = {
